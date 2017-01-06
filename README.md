@@ -12,5 +12,5 @@
 - Document Database
 - Git
 
-33Tech Stack
+##Tech Stack
 - .Net Core
