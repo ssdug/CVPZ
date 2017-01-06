@@ -1,16 +1,16 @@
 # CVPZ
 
-*Goals*
--Build community
--Create a tool
--Quick and easy Developer integration
+##Goals
+- Build community
+- Create a tool
+- Quick and easy Developer integration
 
-*Requirements*
+##Requirements
 
-*Infrastructure*
--Docker
--Document Database
--Git
+##Infrastructure
+- Docker
+- Document Database
+- Git
 
-*Tech Stack*
--.Net Core
+33Tech Stack
+- .Net Core
