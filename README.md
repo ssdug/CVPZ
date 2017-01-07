@@ -10,6 +10,9 @@ As consultants we are constantly needing to keep up our resumes updated with eve
 ##Why?
 We have hoping to inspsire community involvement by building a simple and useful tool. We want to inspire anyone who wants to be involved to come and play. As a community we can expose eachother to our favorite technologies and libraries. We can build relationship and refine our soft skills. Hopefully affecting our local development community in a positive way. 
 
+##How?
+Well that is what we are working to figure out. We will work to set some basic requirements. We are starting with the setup of some infrastructure. We want to use a newer fun technology stack with things that people have the desire to learn and will be usefull for the direction we see the local contracts going.
+
 ##Goals
 - Build community
 - Create a tool
