@@ -1,0 +1,6 @@
+[submodule "CVPZ.Core"]
+	path = CVPZ.Core
+	url = git@github.com:SouthSoundDevelopers/CVPZ.Core.git
+[submodule "CVPZ.WebUI"]
+	path = CVPZ.WebUI
+	url = git@github.com:SouthSoundDevelopers/CVPZ.WebUI.git
