@@ -4,26 +4,43 @@ CV for [Curriculum Vitae](https://en.wikipedia.org/wiki/Curriculum_vitae) is a w
 
 PZ 'cause it sounds easy.
 
-##What?
+## What?
+
 As consultants we are constantly needing to keep up our resumes updated with every engagement and the details of accomplishments. This isn't a terrible task as many of us have a git repository that holds and versions our resume well. Working in many contracts with local government poses a number of different time consuming tasks manually querying resume information to fill out matrix and other forms. The thought came to build a simple tool that can host this information in a format that allows us to automate this. Another benefit to this could be for consulting companies. For the small consulting shop it could be used to rapidly search consultants skills even availability for up coming contracts. 
 
-##Why?
+## Why?
+
 We have hoping to inspsire community involvement by building a simple and useful tool. We want to inspire anyone who wants to be involved to come and play. As a community we can expose eachother to our favorite technologies and libraries. We can build relationship and refine our soft skills. Hopefully affecting our local development community in a positive way. 
 
-##How?
+## How?
+
 Well that is what we are working to figure out. We will work to set some basic requirements. We are starting with the setup of some infrastructure. We want to use a newer fun technology stack with things that people have the desire to learn and will be usefull for the direction we see the local contracts going.
 
-##Goals
+## Goals
+
 - Build community
 - Create a tool
 - Quick and easy Developer integration
 
-##Requirements
+## Requirements
 
-##Infrastructure
+## Infrastructure
+
 - Docker
 - Document Database
 - Git
 
-##Tech Stack
+## Tech Stack
+
 - .Net Core
+
+## Getting Started
+
+1. Install [.NET Core SDK 1.0](https://www.microsoft.com/net/core).
+1. Install [Visual Studio Code](https://code.visualstudio.com/), the [Insiders Edition](https://code.visualstudio.com/insiders) is highly recommended.
+1. Install Docker for [Windows](https://download.docker.com/win/beta/InstallDocker.msi), [Mac](https://download.docker.com/mac/beta/Docker.dmg) or [Linux](https://docs.docker.com/engine/installation/linux/).
+1. Clone the repository: `git clone https://github.com/SouthSoundDevelopers/CVPZ.git`.
+1. Change directory into the cloned repository `cd CVPZ`.
+1. Restore Submodules `git submodule update --init --recursive`.
+1. Restore packages: `dotnet restore`.
+1. Open the project in VSCode `code-insiders .` or `code .` depending on what version you chose to install.
