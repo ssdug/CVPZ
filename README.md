@@ -1,4 +1,4 @@
-# CVPZ
+# CVPZ [![Build status](__updateme__)](https://ci.appveyor.com/project/SouthSoundDevelopers/CVPZ)
 
 CV for [Curriculum Vitae](https://en.wikipedia.org/wiki/Curriculum_vitae) is a written overview of a person's experience and other qualifications for a job opportunity.
 
