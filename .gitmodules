@@ -1,8 +1,8 @@
 [submodule "CVPZ.Core"]
-	path = CVPZ.Core
-	url = https://github.com/SouthSoundDevelopers/CVPZ.Core.git
+	path = src/CVPZ.Core
+	url = git@github.com:SouthSoundDevelopers/CVPZ.Core.git
 	branch = master
 [submodule "CVPZ.WebUI"]
-	path = CVPZ.WebUI
-	url = https://github.com/SouthSoundDevelopers/CVPZ.WebUI.git
+	path = src/CVPZ.WebUI
+	url = git@github.com:SouthSoundDevelopers/CVPZ.WebUI.git
 	branch = master
