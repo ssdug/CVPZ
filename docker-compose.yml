@@ -6,3 +6,15 @@ services:
     build:
       context: ./src/Services/Identity/Identity.api
       dockerfile: Dockerfile
+
+  profile.api:
+    image: profile.api
+    build:
+      context: ./src/Services/Profile/Profile.api
+      dockerfile: Dockerfile
+
+  projects.api:
+    image: projects.api
+    build:
+      context: ./src/Services/Projects/Projects.api
+      dockerfile: Dockerfile
