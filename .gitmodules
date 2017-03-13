@@ -1,8 +1,0 @@
-#[submodule "CVPZ.Core"]
-#	path = src/CVPZ.Core
-#	url = https://github.com/SouthSoundDevelopers/CVPZ.Core.git
-#	branch = master
-#[submodule "CVPZ.WebUI"]
-#	path = src/CVPZ.WebUI
-#	url = https://github.com/SouthSoundDevelopers/CVPZ.WebUI.git
-#	branch = master
