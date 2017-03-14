@@ -2,7 +2,7 @@ version: '2'
 
 services:
   identity.api:
-    image: identity.api:dev
+    image: cvpz/identity.api:dev
     build:
       args:
         source: ${DOCKER_BUILD_SOURCE}
@@ -17,7 +17,7 @@ services:
       - "com.microsoft.visualstudio.targetoperatingsystem=linux"
 
   profile.api:
-    image: profile.api:dev
+    image: cvpz/profile.api:dev
     build:
       args:
         source: ${DOCKER_BUILD_SOURCE}
@@ -32,7 +32,7 @@ services:
       - "com.microsoft.visualstudio.targetoperatingsystem=linux"
 
   projects.api:
-    image: projects.api:dev
+    image: cvpz/projects.api:dev
     build:
       args:
         source: ${DOCKER_BUILD_SOURCE}
