@@ -36,6 +36,7 @@ Well that is what we are working to figure out. We will work to set some basic r
 
 ## Getting Started
 
+1. Install [Docker](https://docs.docker.com/engine/getstarted/step_one/#step-1-get-docker)
 1. Install [.NET Core SDK 1.0](https://www.microsoft.com/net/core).
 1. Install [Visual Studio Code](https://code.visualstudio.com/), the [Insiders Edition](https://code.visualstudio.com/insiders) is highly recommended.
 1. Install Docker for [Windows](https://download.docker.com/win/beta/InstallDocker.msi), [Mac](https://download.docker.com/mac/beta/Docker.dmg) or [Linux](https://docs.docker.com/engine/installation/linux/).
