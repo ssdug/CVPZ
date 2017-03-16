@@ -1,30 +1,49 @@
+#reference here: https://www.appveyor.com/docs/appveyor-yml/
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
 version: '1.0.{build}'
+
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+environment:
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 pull_requests:
   do_not_increment_build_number: true
 
-configuration:
-- Debug
-- Release
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
 
+# build platform, i.e. x86, x64, Any CPU. This setting is optional.
 platform: Any CPU
 
-install:
-  - git submodule update --init --recursive
+# build Configuration, i.e. Debug, Release, etc.
+configuration:
+- Debug
+#- Release disable relese for right now till we get valid docker files
 
+build:
+  parallel: true                  # enable MSBuild parallel builds
+  verbosity: minimal              # MSBuild verbosity level
+  project: CVPZ.sln               # path to Visual Studio solution or project
+
+# scripts to run before build
 before_build:
   nuget restore
 
-cache:
-  - packages -> **\packages.config
 
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
-
-build:
-  parallel: true
-  verbosity: minimal
+#---------------------------------#
+#         notifications           #
+#---------------------------------#
+notifications:
+  - provider: Slack
+    auth_token:
+      secure: 7BRStXzJXLq22YXgdAsX6KJQhYShFzm8PIPDdz+X2yEIu0U5H6Ud2YVp2ARh+AIM
+    channel: cvpz
