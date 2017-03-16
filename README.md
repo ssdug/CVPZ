@@ -16,23 +16,32 @@ We have hoping to inspsire community involvement by building a simple and useful
 
 Well that is what we are working to figure out. We will work to set some basic requirements. We are starting with the setup of some infrastructure. We want to use a newer fun technology stack with things that people have the desire to learn and will be usefull for the direction we see the local contracts going.
 
-## Goals
+## Identity Server
 
-- Build community
-- Create a tool
-- Quick and easy Developer integration
+1. [IdentityServer 4](https://github.com/IdentityServer/IdentityServer4)
+1. [OAuth](https://oauth.net/2/)
 
-## Requirements
+## Web Interface
 
-## Infrastructure
+1. [Angular2](http://learnangular2.com/)
+1. [Node](https://nodejs.org/en/)
+1. [Bootstrap](http://getbootstrap.com/2.3.2/)
 
-- Docker
-- Document Database
-- Git
+## Profile Server
 
-## Tech Stack
+1. [.Net Core Api](https://docs.microsoft.com/en-us/dotnet/core/api/)
+1. [MongoDB](https://www.mongodb.com/)
 
-- .Net Core
+## Engagement Server
+
+1. [.Net Core Api](https://docs.microsoft.com/en-us/dotnet/core/api/)
+1. How to query Skills
+1. How to query Avalability
+
+## Continuous Integration
+
+1. [Apveyor](https://www.appveyor.com/)
+1. [xUnit](https://xunit.github.io/)
 
 ## Getting Started
 
