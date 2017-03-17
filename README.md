@@ -52,5 +52,5 @@ Well that is what we are working to figure out. We will work to set some basic r
 1. Clone the repository: `git clone https://github.com/SouthSoundDevelopers/CVPZ.git`.
 1. Change directory into the cloned repository `cd CVPZ`.
 1. Restore Submodules `git submodule update --init --recursive`.
-1. Restore packages: `dotnet restore`.
+1. Restore packages: `dotnet restore .\CVPZ.sln`.
 1. Open the project in VSCode `code-insiders .` or `code .` depending on what version you chose to install.
