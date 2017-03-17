@@ -47,7 +47,7 @@ Well that is what we are working to figure out. We will work to set some basic r
 
 1. Install Docker for [Windows](https://download.docker.com/win/beta/InstallDocker.msi), [Mac](https://download.docker.com/mac/beta/Docker.dmg) or [Linux](https://docs.docker.com/engine/installation/linux/).
     - Note: Docker required x64 bit and is not supported on Windows Home editions. The [Docker-Toolbox](https://www.docker.com/products/docker-toolbox) can be installed instead. (Tutorial [here](https://docs.docker.com/toolbox/toolbox_install_windows))
-1. Install [.NET Core SDK 1.0](https://www.microsoft.com/net/core).
+1. Install [.NET Core SDK 1.0](https://www.microsoft.com/net/download/core).  
 1. Install [Visual Studio Code](https://code.visualstudio.com/), the [Insiders Edition](https://code.visualstudio.com/insiders) is highly recommended.
 1. Clone the repository: `git clone https://github.com/SouthSoundDevelopers/CVPZ.git`.
 1. Change directory into the cloned repository `cd CVPZ`.
