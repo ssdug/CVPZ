@@ -53,3 +53,14 @@ Well that is what we are working to figure out. We will work to set some basic r
 1. Change directory into the cloned repository `cd CVPZ`.
 1. Restore packages: `dotnet restore .\CVPZ.sln`.
 1. Open the project in VSCode `code-insiders .` or `code .` depending on what version you chose to install.
+
+### Running Under Docker
+
+1. Change directory into the cloned repository `cd CVPZ`.
+1. Execute the command `docker-compose -f docker-compose.ci.build.yml up`.
+1. Execute the command `docker-compose up`
+1. Open PowerShell.
+1. Issue the command `curl http://localhost:5505/api/values` to confirm identity api is up.
+1. Issue the command `curl http://localhost:5502/api/values` to confirm the profile api is up.
+1. Issue the command `curl http://localhost:5503/api/values` to confirm the projects api is up.
+1. To shut down the image, hit `Ctrl-C`
