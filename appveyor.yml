@@ -27,7 +27,7 @@ platform: Any CPU
 # build Configuration, i.e. Debug, Release, etc.
 configuration:
 - Debug
-- Release
+#- Release disable relese for right now till we get valid docker files
 
 build:
   parallel: true                  # enable MSBuild parallel builds
