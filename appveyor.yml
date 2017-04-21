@@ -17,6 +17,9 @@ environment:
 pull_requests:
   do_not_increment_build_number: true
 
+install:
+  - docker version
+
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
@@ -29,15 +32,19 @@ configuration:
 - Debug
 #- Release disable relese for right now till we get valid docker files
 
+# scripts to run before build
+before_build:
+  nuget restore
+
 build:
   parallel: true                  # enable MSBuild parallel builds
   verbosity: minimal              # MSBuild verbosity level
   project: CVPZ.sln               # path to Visual Studio solution or project
 
-# scripts to run before build
-before_build:
-  nuget restore
-
+after_build:
+- ps: >-
+    docker-compose -f .\docker-compose.ci.build.yml up
+    
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
