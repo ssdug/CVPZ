@@ -38,6 +38,14 @@ build:
 before_build:
   nuget restore
 
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# scripts to run before tests
+before_test:
+- ps: >-
+    docker images
 
 #---------------------------------#
 #         notifications           #
