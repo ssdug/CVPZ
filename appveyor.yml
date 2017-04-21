@@ -41,10 +41,10 @@ build:
   verbosity: minimal              # MSBuild verbosity level
   project: CVPZ.sln               # path to Visual Studio solution or project
 
-after_build:
-- ps: >-
-    docker-compose -f .\docker-compose.ci.build.yml up
-    
+#after_build:
+#- ps: >-
+#    docker-compose -f .\docker-compose.ci.build.yml up
+
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
@@ -53,6 +53,7 @@ after_build:
 before_test:
 - ps: >-
     docker images
+#    docker-compose up
 
 #---------------------------------#
 #         notifications           #
