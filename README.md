@@ -1,4 +1,4 @@
-# CVPZ [![Build status](https://ci.appveyor.com/api/projects/status/m9msqx3io0btxx28?svg=true)](https://ci.appveyor.com/project/McLeopold/cvpz) [![Join us](https://ssdug-slackin.azurewebsites.net/badge.svg)](https://ssdug-slackin.azurewebsites.net/)
+# CVPZ [![Build status](https://ci.appveyor.com/api/projects/status/rwvr7jl20nw00eiu/branch/master?svg=true)](https://ci.appveyor.com/project/ssdugadmin21923/cvpz/branch/master) [![Join us](https://ssdug-slackin.azurewebsites.net/badge.svg)](https://ssdug-slackin.azurewebsites.net/)
 
 CV for [Curriculum Vitae](https://en.wikipedia.org/wiki/Curriculum_vitae) is a written overview of a person's experience and other qualifications.
 
