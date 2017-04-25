@@ -3,17 +3,29 @@ version: '2'
 services:
   identity.api:
     image: cvpz/identity.api
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+    ports:
+      - "5001:5001"
     build:
       context: ./src/Identity.api
       dockerfile: Dockerfile
   profile.api:
     image: cvpz/profile.api
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5002
+    ports:
+      - "5002:5002"
     build:
       context: ./src/Profile.api
       dockerfile: Dockerfile
 
   projects.api:
     image: cvpz/projects.api
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5003
+    ports:
+      - "5003:5003"
     build:
       context: ./src/Projects.api
       dockerfile: Dockerfile
