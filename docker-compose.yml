@@ -10,6 +10,7 @@ services:
     build:
       context: ./src/Identity.api
       dockerfile: Dockerfile
+
   profile.api:
     image: cvpz/profile.api
     environment:
