@@ -65,6 +65,7 @@ By having one common goal to work toward, we will share ideas and continually mo
 
 ### Running Under Docker from PowerShell
 
+1. Ensure Docker for Windows is running and set to Linux containers.
 1. Open PowerShell.
 1. Change directory into the cloned repository `cd CVPZ`.
 1. Execute the command `scripts\docker_up.ps1 -r -b`.
@@ -77,12 +78,12 @@ By having one common goal to work toward, we will share ideas and continually mo
 
 ### Running Under Docker from Visual Studio 2017
 
+1. Ensure Docker for Windows is running and set to Linux containers.
 1. Open Visual Studio.
 1. Open the `CVPZ.sln`.
 1. Select either Debug or Release configuration.
 1. Right click the `docker-compose` project and select debug.
 
-**Note:** This starts up the application in docker and attaches a debugger. The debugger does not appear to work.
 
 ## Architecture
 
