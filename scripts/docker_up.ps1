@@ -12,9 +12,11 @@ if($rebuild) {
 if ($background) {
     docker-compose `
     -f .\docker-compose.yml `
+    -f .\docker-compose.override.yml `
     up -d --build
 } else {
     docker-compose `
     -f .\docker-compose.yml `
+    -f .\docker-compose.override.yml `
     up --build
 }
