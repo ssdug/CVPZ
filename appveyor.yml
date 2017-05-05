@@ -17,6 +17,9 @@ environment:
 pull_requests:
   do_not_increment_build_number: true
 
+install:
+  - docker version
+
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
@@ -29,15 +32,28 @@ configuration:
 - Debug
 #- Release disable relese for right now till we get valid docker files
 
+# scripts to run before build
+before_build:
+  nuget restore
+
 build:
   parallel: true                  # enable MSBuild parallel builds
   verbosity: minimal              # MSBuild verbosity level
   project: CVPZ.sln               # path to Visual Studio solution or project
 
-# scripts to run before build
-before_build:
-  nuget restore
+#after_build:
+#- ps: >-
+#    docker-compose -f .\docker-compose.ci.build.yml up
 
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# scripts to run before tests
+before_test:
+- ps: >-
+    docker images
+#    docker-compose up
 
 #---------------------------------#
 #         notifications           #
@@ -45,5 +61,5 @@ before_build:
 notifications:
   - provider: Slack
     auth_token:
-      secure: WcnxbrAG2PIcKRS2fYEvq0QnjRrYZO2n/sz1MnHPHMwqjY9jZwrUkDp/hm/uY1hX
+      secure: 7aiC1DmkTyfYpRtskjpTsTajFolPBOvzuFf1pRlcF0IOPzQzvhfG5LJpZ6iTXM5W
     channel: cvpz
