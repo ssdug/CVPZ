@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{57790ECB-8061-466A-936E-730DF9D4FEA6}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.travis.yml = .travis.yml
 		appveyor.yml = appveyor.yml
 		LICENSE = LICENSE
 		README.md = README.md

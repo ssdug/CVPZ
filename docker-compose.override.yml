@@ -2,21 +2,24 @@ version: '2'
 
 services:
 
+  webui:
+    ports:
+      - "5000:80"
+
   identity.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:5001
     ports:
-      - "5001:5001"
+      - "5001:80"
+
   profile.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:5002
     ports:
-      - "5002:5002"
+      - "5002:80"
+  
   projects.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:5003
     ports:
-      - "5003:5003"
+      - "5003:80"

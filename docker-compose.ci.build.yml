@@ -1,7 +1,15 @@
 version: '2'
 
 services:
-  ci-build:
+
+  ci-build-angular:
+    image: alexsuch/angular-cli
+    volumes:
+      - ./src/WebUI:/src
+    working_dir: /src
+    command: /bin/sh -c "npm install --silent && ng build"
+
+  ci-build-netcore:
     image: microsoft/aspnetcore-build:1.0-1.1
     volumes:
       - .:/src
