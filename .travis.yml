@@ -1,3 +1,4 @@
+
 #---------------------------------#
 #      general configuration      #
 #---------------------------------#
@@ -49,3 +50,4 @@ script:
 notifications:
   slack:
     secure: qJ2Sui1YbfNKyeX+f2p0LZSbh+8wiSLalGu9ze2syQ6JP64Rbo7XvLlTtlgstAI9icx5mF4B4AgY8QwOFwQqOFhnmt6ZZRy52DQ1Z6ARb/Y/Wk9N7k9FEwZNKwXtlB2OpOGYh3dFzvkC/K1339EhfpjJdhaMvlcEw6SdXFR6zCckI5mGvmYGDzuY/qR1laVP8nUaMNli2XOYL5TwlRchDvl2+qnz57aqk42E3NlCY2FoX2EMAdxgDnH9Mo+HXNjFZpy/CfXf6l1qF3QdyIDYsyddT+xx1X8rGhEclYgtgTyxb13zAkwu7zbU64ulJPZEcT1K55sHPOtpt/ADyta1VGf8hLP6So6BIe3Q3JFi6qlzrUGTxIxbbh/pPlk7Vf3jOyRiJFsO2jq4USaBz0XIstOKY7PEyhcWupZG6zqimiR6iPmctaOrDBSQ1LJ8IaFq61/8uJU/XhpPs5utx5ToH8kNnxmd6Noxgsm/48UxhAQAX0eRESEdVRMX6FpsY6zO2ZrAOrPMAp386mwTzbSWrbeCG+4IINZbMP6MRrY7dsMGktJigIx1DXDjKPYnaGaF2Qju9aswlbyoJOgW8zZYbIdRya97ypCpLoU8zbd53GXMbsLEZjCV/BafInpG1WwbT0iF/B0xkHvyNp3mLYk8UCZQMRex+6gi+Dh/PSHteJI=
+
