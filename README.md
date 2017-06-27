@@ -35,7 +35,7 @@ Developers continuously need to keep their resumes current, documenting every pr
 
 ## Why
 
-We are hoping to inspire community involvement by building a simple and useful tool and to create and open space for anyone who wants to be involved to come and play. As a community we can expose each other to our favorite technologies and libraries, build relationships and refine our soft skills. Ultimately this should affect our local development community in many positive ways.
+We are hoping to inspire community involvement by building a simple and useful tool and to create an open space for anyone who wants to be involved to come and play. As a community we can expose each other to our favorite technologies and libraries, build relationships and refine our soft skills. Ultimately this should affect our local development community in many positive ways.
 
 ## How
 
