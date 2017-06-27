@@ -241,3 +241,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+#Databases
+
+/data/db/
