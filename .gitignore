@@ -245,3 +245,4 @@ ModelManifest.xml
 #Databases
 
 /data/db/
+.DS_Store

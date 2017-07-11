@@ -27,7 +27,7 @@
 
 ## Who
 
-CVPZ is a community project created by the South Sound Developers User Group ([SSDUG](http://ssdug.org)) in lovely [Olympia, WA](http://olympiawa.gov/). The group is led by [Eve Ragins](https://github.com/orgs/ssdug/people/emragins) and this project was started and led by [Carter Barnes](https://github.com/orgs/ssdug/people/CarBar).
+CVPZ is a community project created by the South Sound Developers User Group ([SSDUG](http://ssdug.org)) in lovely [Olympia, WA](http://olympiawa.gov/). The group is led by [Eve Ragins](https://github.com/emragins) and this project was started and led by [Carter Barnes](https://github.com/CarBar).
 
 ## What
 
@@ -77,6 +77,21 @@ By having one common goal to work toward, we will share ideas and continually mo
 1. To shut down the image, execute the command `scripts\docker_down.ps1`
 
 **Note:** Docker is configured to expose ports for each service, so the local_ping scripts works for both workflows.
+
+### Running Under Docker from Bash
+
+1. Ensure Docker for Mac/Linux is running and set to Linux containers.
+1. Open Terminal.
+1. Change directory into the cloned repository `cd CVPZ`.
+1. Execute the command `./scripts/docker_up.sh -r -b`.
+	- This will build the project and start all services running in the background.
+1. Execute the command `./scripts/local_ping.sh`
+	- This will hit the `api/health/ping` endpoint on all services.
+1. To shut down the image, execute the command `./scripts/docker_down.sh`
+
+**Note:** Docker is configured to expose ports for each service, so the local_ping scripts works for both workflows.
+**Additional Note:** These Bash scripts are run with the sudo command, so you may be prompted for your password when running them.
+
 
 ### Running Under Docker from Visual Studio 2017
 
