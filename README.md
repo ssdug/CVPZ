@@ -10,7 +10,7 @@
 - [Getting Started](#getting-started)
 
   - [Running Locally from PowerShell](#running-locally-from-powershell)
-  - [Running Under Docker from PowerShell](#running-under-docker-from-powershell)
+  - [Running Under Docker from PowerShell or Bash](#running-under-docker-from-powershell-or-bash)
   - [Running Under Docker from Visual Studio 2017](#running-under-docker-from-visual-studio-2017)
 
 - [Architecture](#architecture)
@@ -65,33 +65,20 @@ By having one common goal to work toward, we will share ideas and continually mo
     - This will hit the `api/health/ping` endpoint on all services.
 1. To shut down the image, execute the command `scripts\local_down.ps1`
 
-### Running Under Docker from PowerShell
+### Running Under Docker from PowerShell or Bash
 
 1. Ensure Docker for Windows is running and set to Linux containers.
 1. Open PowerShell.
 1. Change directory into the cloned repository `cd CVPZ`.
-1. Execute the command `scripts\docker_up.ps1 -r -b`.
+1. Execute the command `scripts\docker_up -r -b`.
 	- This will build the project and start all services running in the background.
-1. Execute the command `scripts\local_ping.ps1`
+1. Execute the command `scripts\services_ping`
 	- This will hit the `api/health/ping` endpoint on all services.
-1. To shut down the image, execute the command `scripts\docker_down.ps1`
+1. To shut down the image, execute the command `scripts\docker_down`
 
-**Note:** Docker is configured to expose ports for each service, so the local_ping scripts works for both workflows.
+**Note:** Docker is configured to expose ports for each service, so the services_ping scripts works for both workflows.
 
-### Running Under Docker from Bash
-
-1. Ensure Docker for Mac/Linux is running and set to Linux containers.
-1. Open Terminal.
-1. Change directory into the cloned repository `cd CVPZ`.
-1. Execute the command `./scripts/docker_up.sh -r -b`.
-	- This will build the project and start all services running in the background.
-1. Execute the command `./scripts/local_ping.sh`
-	- This will hit the `api/health/ping` endpoint on all services.
-1. To shut down the image, execute the command `./scripts/docker_down.sh`
-
-**Note:** Docker is configured to expose ports for each service, so the local_ping scripts works for both workflows.
-**Additional Note:** These Bash scripts are run with the sudo command, so you may be prompted for your password when running them.
-
+**Note:** Under Bash scripts are run with the sudo command, so you may be prompted for your password when running them.
 
 ### Running Under Docker from Visual Studio 2017
 
