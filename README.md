@@ -1,4 +1,4 @@
-# CVPZ [![Build status](https://ci.appveyor.com/api/projects/status/rwvr7jl20nw00eiu/branch/master?svg=true)](https://ci.appveyor.com/project/ssdugadmin21923/cvpz/branch/master) [![Build Status](https://travis-ci.org/ssdug/CVPZ.svg?branch=master)](https://travis-ci.org/ssdug/CVPZ) [![Join us](https://ssdug-slackin.azurewebsites.net/badge.svg)](https://ssdug-slackin.azurewebsites.net/)
+# CVPZ [![Build status](https://ci.appveyor.com/api/projects/status/rwvr7jl20nw00eiu/branch/master?svg=true)](https://ci.appveyor.com/project/ssdugadmin21923/cvpz/branch/master) [![Build Status](https://travis-ci.org/ssdug/CVPZ.svg?branch=master)](https://travis-ci.org/ssdug/CVPZ) [![Join us](https://wt-3f533296d128037c9af8381221f78dd6-0.run.webtask.io/ssdug-slack/badge.svg)](https://wt-3f533296d128037c9af8381221f78dd6-0.run.webtask.io/ssdug-slack/)
 
 ![CVPZ](docs/images/buisness_cat.jpg?raw=true "CVPZ")
 
