@@ -1,16 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { SystemStatusService } from './system-status.service';
+import { SystemStatusComponent } from './system-status/system-status.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SystemStatusComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [SystemStatusService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
