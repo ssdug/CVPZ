@@ -11,7 +11,7 @@
 sudo: required
 language: csharp
 mono: none
-dotnet: 2.0.2
+dotnet: 2.0.0
 dist: trusty
 
 services:
