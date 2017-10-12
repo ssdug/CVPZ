@@ -100,7 +100,7 @@ By having one common goal to work toward, we will share ideas and continually mo
 
 1. [Angular2](http://learnangular2.com/)
 1. [Node](https://nodejs.org/en/)
-1. [Bootstrap](http://getbootstrap.com/2.3.2/)
+1. [Bootstrap](https://v4-alpha.getbootstrap.com/)
 
 ### Profile Service
 
