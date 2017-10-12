@@ -27,8 +27,8 @@ addons:
 
 install:
 - docker pull alexsuch/angular-cli:latest
-- docker pull microsoft/aspnetcore-build:1.0-1.1
-- docker pull microsoft/aspnetcore:1.1
+- docker pull microsoft/aspnetcore-build:2.0
+- docker pull microsoft/aspnetcore:2.0
 - docker pull nginx:latest
 
 script:
