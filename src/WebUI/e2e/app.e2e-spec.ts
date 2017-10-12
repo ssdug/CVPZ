@@ -1,14 +1,14 @@
-import { WebuiPage } from './app.po';
+import { WebUIPage } from './app.po';
 
-describe('webui App', function() {
-  let page: WebuiPage;
+describe('web-ui App', () => {
+  let page: WebUIPage;
 
   beforeEach(() => {
-    page = new WebuiPage();
+    page = new WebUIPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
