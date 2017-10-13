@@ -105,7 +105,6 @@ By having one common goal to work toward, we will share ideas and continually mo
 ### Profile Service
 
 1. [.Net Core Api](https://docs.microsoft.com/en-us/dotnet/core/api/)
-1. [MongoDB](https://www.mongodb.com/)
 
 ### Engagement Service
 
