@@ -1,13 +1,12 @@
-import { SystemStatusService } from './../system-status.service';
-import { HttpModule } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
+import { SystemStatusService } from './../system-status.service';
 
 @Component({
-  selector: 'app-system-status-component',
-  templateUrl: './system-status-component.component.html',
-  styleUrls: ['./system-status-component.component.css']
+  selector: 'app-system-status',
+  templateUrl: './system-status.component.html',
+  styleUrls: ['./system-status.component.css']
 })
-export class SystemStatusComponentComponent implements OnInit {
+export class SystemStatusComponent implements OnInit {
 
   identityServiceStatus: boolean = null;
   profileServiceStatus: boolean = null;

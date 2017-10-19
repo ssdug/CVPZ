@@ -46,7 +46,7 @@ By having one common goal to work toward, we will share ideas and continually mo
 1. Install Docker for [Windows](https://download.docker.com/win/beta/InstallDocker.msi), [Mac](https://download.docker.com/mac/beta/Docker.dmg) or [Linux](https://docs.docker.com/engine/installation/linux/).
     - Note: Docker required x64 bit and is not supported on Windows Home editions. The [Docker-Toolbox](https://www.docker.com/products/docker-toolbox) can be installed instead. (Tutorial [here](https://docs.docker.com/toolbox/toolbox_install_windows))
     - Further Note: It was discoved that there is a compatibility problem with CVPZ and the docker toolbox for version 17.03 and earlier.  The problem was resolved in the most recent release (17.04.0.ce).  To ensure your docker toolbox is up to date, run the command `docker version`.
-1. Install [.NET Core SDK 1.1](https://www.microsoft.com/net/download/core).  
+1. Install [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core).
 1. Install [Visual Studio Code](https://code.visualstudio.com/), the [Insiders Edition](https://code.visualstudio.com/insiders) is highly recommended.
 1. Clone the repository: `git clone https://github.com/ssdug/CVPZ.git`.
 1. Change directory into the cloned repository `cd CVPZ`.
@@ -100,7 +100,7 @@ By having one common goal to work toward, we will share ideas and continually mo
 
 1. [Angular2](http://learnangular2.com/)
 1. [Node](https://nodejs.org/en/)
-1. [Bootstrap](http://getbootstrap.com/2.3.2/)
+1. [Bootstrap](https://v4-alpha.getbootstrap.com/)
 
 ### Profile Service
 
