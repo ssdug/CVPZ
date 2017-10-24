@@ -23,8 +23,18 @@ namespace Profile.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddMvc();
+            services.AddMvcCore()
+                .AddAuthorization()
+                .AddJsonFormatters();
+
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ApiName = "health-api";
+                });
 
             services.AddCors(options =>
             {
