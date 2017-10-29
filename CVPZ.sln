@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{26AF0E02-D463-4EB7-ABDC-C02AA0920514}"
 EndProject
@@ -29,6 +29,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{26AF0E02-D463-4EB7-ABDC-C02AA0920514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26AF0E02-D463-4EB7-ABDC-C02AA0920514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26AF0E02-D463-4EB7-ABDC-C02AA0920514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B3E1CFF-E73F-445D-8795-5FC5A5A255A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B3E1CFF-E73F-445D-8795-5FC5A5A255A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -50,5 +51,8 @@ Global
 		{0B3E1CFF-E73F-445D-8795-5FC5A5A255A7} = {35F7CC0C-6943-4D1E-9B83-F469D82D63AB}
 		{102F5E96-F086-4AAB-8A15-726852B625D5} = {35F7CC0C-6943-4D1E-9B83-F469D82D63AB}
 		{ABE591BD-5B3B-440C-964A-0BF887296598} = {35F7CC0C-6943-4D1E-9B83-F469D82D63AB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30C9A73C-D16B-436D-9EF7-55112E90CC90}
 	EndGlobalSection
 EndGlobal
