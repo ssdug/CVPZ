@@ -39,6 +39,12 @@ namespace Identity.api
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("secret".Sha256()) },
                     AllowedScopes = { "health-api" }
+                },
+                new Client {
+                    ClientId = "angularclient",
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    AllowedScopes = { "health-api" }
                 }
             };
         }
