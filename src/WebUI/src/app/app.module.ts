@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { SystemStatusService } from './system-status.service';
+import { SystemStatusService } from './services/system-status.service';
 import { SystemStatusComponent } from './system-status/system-status.component';
 
 import { AppRoutingModule } from './app-routing.module';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemStatusService } from './../system-status.service';
+import { SystemStatusService } from './../services/system-status.service';
 
 @Component({
   selector: 'app-system-status',
