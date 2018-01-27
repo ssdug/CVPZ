@@ -17,7 +17,6 @@ namespace Identity.api
         public static void Main(string[] args)
         {
             Console.Title = "IdentityServer4";
-
             BuildWebHost(args).Run();
         }
 

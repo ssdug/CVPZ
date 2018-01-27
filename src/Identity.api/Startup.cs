@@ -27,12 +27,6 @@ namespace Identity.api
         {
             services.AddMvc();
 
-            services.Configure<IISOptions>(iis => 
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
-
             services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseSuccessEvents = true;

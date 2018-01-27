@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 
-import { AuthService } from '../services/auth.service'
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-call-api',
@@ -13,10 +13,10 @@ export class CallApiComponent implements OnInit {
   constructor(private http: Http, private authService: AuthService) { }
 
   ngOnInit() {
-    let header = new Headers({ 'Authorization': this.authService.getAuthorizationHeaderValue() });
-    let options = new RequestOptions({ headers: header });
+    const header = new Headers({ 'Authorization': this.authService.getAuthorizationHeaderValue() });
+    const options = new RequestOptions({ headers: header });
 
-    this.http.get("http://localhost:5000/api", options)
+    this.http.get('http://localhost:5000/api', options)
       .subscribe(response => this.response = response.text());
   }
 }

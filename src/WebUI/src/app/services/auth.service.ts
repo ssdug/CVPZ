@@ -34,6 +34,27 @@ export class AuthService {
       this.user = user;
     });
   }
+
+  startSignoutMainWindow() {
+    this.manager.getUser().then(user => {
+      return this.manager.signoutRedirect({ id_token_hint: user.id_token }).then(resp => {
+        console.log('signed out', resp);
+        setTimeout(5000, () => {
+          console.log('testing to see if fired...');
+        });
+      }).catch(function (err) {
+        console.log(err);
+      });
+    });
+  }
+
+  endSignoutMainWindow() {
+    this.manager.signoutRedirectCallback().then(function (resp) {
+      console.log('signed out', resp);
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
 }
 
 export function getClientSettings(): UserManagerSettings {
@@ -42,8 +63,8 @@ export function getClientSettings(): UserManagerSettings {
     client_id: 'angular_spa',
     redirect_uri: 'http://localhost:5000/auth-callback',
     post_logout_redirect_uri: 'http://localhost:5000/',
-    response_type: "id_token token",
-    scope: "openid profile api1",
+    response_type: 'id_token token',
+    scope: 'openid profile api1',
     filterProtocolClaims: true,
     loadUserInfo: true,
     automaticSilentRenew: true,
