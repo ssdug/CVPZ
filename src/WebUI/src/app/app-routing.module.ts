@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
@@ -10,6 +11,7 @@ import { SystemStatusComponent } from './system-status/system-status.component';
 const routes: Routes = [
   {
     path: '',
+    component: DashboardComponent,
     children: []
   },
   {

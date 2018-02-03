@@ -7,4 +7,4 @@ services:
     volumes:
       - ./src/WebUI:/src
     working_dir: /src
-    command: /bin/sh -c "npm install --silent && ng build"
+    command: /bin/sh -c "yarn install --silent && ng build"

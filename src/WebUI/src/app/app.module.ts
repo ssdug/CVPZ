@@ -16,6 +16,7 @@ import { LoginInfoComponent } from './login-info/login-info.component';
 import { LoginComponent } from './login/login.component';
 import { CallApiComponent } from './call-api/call-api.component';
 import { LoginStatusComponent } from './login-status/login-status.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoginStatusComponent } from './login-status/login-status.component';
     LoginComponent,
     CallApiComponent,
     LoginStatusComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

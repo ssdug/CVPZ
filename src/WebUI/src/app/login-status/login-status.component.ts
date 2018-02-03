@@ -9,9 +9,21 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginStatusComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  loggedIn: Boolean = false;
+
+  constructor(private authService: AuthService) {
+    const isLoggedIn = this.authService.isLoggedInObs();
+    isLoggedIn.subscribe((l) => {
+        this.loggedIn = l;
+    });
+  }
 
   ngOnInit() {
+
+  }
+
+  doLogout() {
+    this.authService.startSignoutMainWindow();
   }
 
 }

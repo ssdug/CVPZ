@@ -12,36 +12,5 @@ export class LoginInfoComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
   ngOnInit() {
-    this.loadedUserSub = this.authService.userLoadededEvent
-      .subscribe(user => {
-        this._user = user;
-      });
-  }
-  clearState() {
-    this.authService.clearState();
-  }
-  getUser() {
-    this.authService.getUser();
-  }
-  removeUser() {
-    this.authService.removeUser();
-  }
-  startSigninMainWindow() {
-    this.authService.startSigninMainWindow();
-  }
-  endSigninMainWindow() {
-    this.authService.endSigninMainWindow();
-  }
-  startSignoutMainWindow() {
-    this.authService.startSignoutMainWindow();
-  }
-  endSignoutMainWindow() {
-    this.authService.endSigninMainWindow();
-  }
-
-  ngOnDestroy() {
-    if (this.loadedUserSub.unsubscribe()) {
-      this.loadedUserSub.unsubscribe();
-    }
   }
 }
