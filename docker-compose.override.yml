@@ -2,6 +2,10 @@ version: '3'
 
 services:
 
+  cv.data:
+    ports:
+      - "5433:1433"
+
   webui:
     ports:
       - "5000:80"
