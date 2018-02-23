@@ -2,6 +2,7 @@
 
 <div class="statusGroup">
   <ul class="list-group">
+    <li class="list-group-item">To login: usr=bob, pwd=bob</li>
     <li class="list-group-item">Is Logged In: {{ loggedIn }}</li>
     <li class="list-group-item" *ngIf="loggedIn">{{ claims | json }}</li>
     <li class="list-group-item list-group-item-action">

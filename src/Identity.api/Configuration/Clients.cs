@@ -14,7 +14,11 @@ namespace Identity.api.Configuration
                     ClientId = "angular_spa",
                     ClientName = "Angular 4 Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowedScopes = new List<string> { "openid", "profile", "api1" },
+                    AllowedScopes = new List<string> {
+                        "openid",
+                        "profile",
+                        "cv.profile"
+                    },
                     RedirectUris = new List<string> { "http://localhost:4200/auth-callback", "http://localhost:5000/auth-callback" },
                     PostLogoutRedirectUris = new List<string> { "http://localhost:4200/", "http://localhost:5000/" },
                     AllowedCorsOrigins = new List<string> { "http://localhost:4200", "http://localhost:5000" },

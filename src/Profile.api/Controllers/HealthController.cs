@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Profile.api.Controllers
 {
@@ -7,6 +8,13 @@ namespace Profile.api.Controllers
     {
         [HttpGet("ping")]
         public IActionResult Ping()
+        {
+            return Ok("pong");
+        }
+
+        [HttpGet("secureping")]
+        [Authorize]
+        public IActionResult SecurePing()
         {
             return Ok("pong");
         }

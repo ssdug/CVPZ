@@ -35,10 +35,20 @@ namespace Identity.api
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvcCore();
 
             string connectionString = Configuration.GetConnectionString("IdentityServer");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
             services.AddIdentityServer(options =>
                 {
@@ -85,6 +95,7 @@ namespace Identity.api
             app.UseDeveloperExceptionPage();
 
             app.UseIdentityServer();
+            app.UseCors("CorsPolicy");
             
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
