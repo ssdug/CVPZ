@@ -10,11 +10,15 @@ import { AuthService } from '../services/auth.service';
 export class LoginStatusComponent implements OnInit {
 
   loggedIn: Boolean = false;
+  claims: any;
 
   constructor(private authService: AuthService) {
     const isLoggedIn = this.authService.isLoggedInObs();
     isLoggedIn.subscribe((l) => {
-        this.loggedIn = l;
+      this.loggedIn = l;
+      if (this.loggedIn) {
+        this.claims = this.authService.getClaims();
+      }
     });
   }
 

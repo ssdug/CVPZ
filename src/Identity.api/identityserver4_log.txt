@@ -1,0 +1,10 @@
+2018-02-22 15:32:52.024 -08:00 [DBG] Using idsrv as default scheme for authentication
+2018-02-22 15:32:52.070 -08:00 [DBG] Using idsrv as default scheme for sign-in
+2018-02-22 15:32:52.078 -08:00 [DBG] Using idsrv as default scheme for sign-out
+2018-02-22 15:32:52.079 -08:00 [DBG] Using idsrv as default scheme for challenge
+2018-02-22 15:32:52.080 -08:00 [DBG] Using idsrv as default scheme for forbid
+2018-02-22 15:33:19.014 -08:00 [DBG] Using idsrv as default scheme for authentication
+2018-02-22 15:33:19.079 -08:00 [DBG] Using idsrv as default scheme for sign-in
+2018-02-22 15:33:19.087 -08:00 [DBG] Using idsrv as default scheme for sign-out
+2018-02-22 15:33:19.094 -08:00 [DBG] Using idsrv as default scheme for challenge
+2018-02-22 15:33:19.106 -08:00 [DBG] Using idsrv as default scheme for forbid

@@ -6,26 +6,39 @@ using Identity.api.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microsoft.IdentityModel.Tokens;
-using IdentityServer4;
-using Microsoft.AspNetCore.Http;
 using IdentityServer4.Quickstart.UI;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using IdentityServer4.Configuration;
+using IdentityServer4.EntityFramework.DbContexts;
+using System.Linq;
+using IdentityServer4.EntityFramework.Mappers;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Identity.api
 {
     public class Startup
     {
-        private readonly IConfiguration _config;
 
-        public Startup(IConfiguration config)
+        public IConfigurationRoot Configuration { get; }
+
+        public Startup(IHostingEnvironment env)
         {
-            _config = config;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            string connectionString = Configuration.GetConnectionString("IdentityServer");
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddIdentityServer(options =>
                 {
@@ -33,18 +46,31 @@ namespace Identity.api
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseErrorEvents = true;
                 })
-                //this can be stored in a db.  You would have to have apps register
-                .AddInMemoryClients(Clients.Get())
-                //.AddInMemoryClients(_config.GetSection("Clients"))
-                .AddInMemoryIdentityResources(Resources.GetIdentityResources())
-                .AddInMemoryApiResources(Resources.GetApiResources())
                 .AddDeveloperSigningCredential()
                 .AddExtensionGrantValidator<Extensions.ExtensionGrantValidator>()
                 .AddExtensionGrantValidator<Extensions.NoSubjectExtensionGrantValidator>()
                 .AddJwtBearerClientAuthentication()
                 .AddAppAuthRedirectUriValidator()
                 //loaded from your db
-                .AddTestUsers(TestUsers.Users);
+                .AddTestUsers(TestUsers.Users)
+                // this adds the config data from DB (clients, resources)
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = builder =>
+                        builder.UseSqlServer(connectionString,
+                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                })
+                // this adds the operational data from DB (codes, tokens, consents)
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = builder =>
+                        builder.UseSqlServer(connectionString,
+                            sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                    // this enables automatic token cleanup. this is optional.
+                    options.EnableTokenCleanup = true;
+                    options.TokenCleanupInterval = 30;
+                });
 
             services.AddExternalIdentityProviders();
 
@@ -53,6 +79,9 @@ namespace Identity.api
 
         public void Configure(IApplicationBuilder app)
         {
+            // this will do the initial DB population
+            InitializeDatabase(app);
+
             app.UseDeveloperExceptionPage();
 
             app.UseIdentityServer();
@@ -60,79 +89,42 @@ namespace Identity.api
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
-    }
 
-    public static class ServiceExtensions
-    {
-        public static IServiceCollection AddExternalIdentityProviders(this IServiceCollection services)
+        private void InitializeDatabase(IApplicationBuilder app)
         {
-            // configures the OpenIdConnect handlers to persist the state parameter into the server-side IDistributedCache.
-            services.AddOidcStateDataFormatterCache("aad", "demoidsrv");
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
-            services.AddAuthentication()
-                .AddGoogle("Google", options =>
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                if (!context.Clients.Any())
                 {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
-                    options.ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com";
-                    options.ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh";
-                })
-                .AddOpenIdConnect("demoidsrv", "IdentityServer", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-
-                    options.Authority = "https://demo.identityserver.io/";
-                    options.ClientId = "implicit";
-                    options.ResponseType = "id_token";
-                    options.SaveTokens = true;
-                    options.CallbackPath = new PathString("/signin-idsrv");
-                    options.SignedOutCallbackPath = new PathString("/signout-callback-idsrv");
-                    options.RemoteSignOutPath = new PathString("/signout-idsrv");
-
-                    options.TokenValidationParameters = new TokenValidationParameters
+                    foreach (var client in Clients.Get())
                     {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                })
-                .AddOpenIdConnect("aad", "Azure AD", options =>
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
                 {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                
-                    options.Authority = "https://login.windows.net/4ca9cb4c-5e5f-4be9-b700-c532992a3705";
-                    options.ClientId = "96e3c53e-01cb-4244-b658-a42164cb67a9";
-                    options.ResponseType = "id_token";
-                    options.CallbackPath = new PathString("/signin-aad");
-                    options.SignedOutCallbackPath = new PathString("/signout-callback-aad");
-                    options.RemoteSignOutPath = new PathString("/signout-aad");
-                    options.TokenValidationParameters = new TokenValidationParameters
+                    foreach (var resource in Resources.GetIdentityResources())
                     {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                })
-                .AddOpenIdConnect("adfs", "ADFS", options =>
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiResources.Any())
                 {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-
-                    options.Authority = "https://adfs.leastprivilege.vm/adfs";
-                    options.ClientId = "c0ea8d99-f1e7-43b0-a100-7dee3f2e5c3c";
-                    options.ResponseType = "id_token";
-
-                    options.CallbackPath = new PathString("/signin-adfs");
-                    options.SignedOutCallbackPath = new PathString("/signout-callback-adfs");
-                    options.RemoteSignOutPath = new PathString("/signout-adfs");
-                    options.TokenValidationParameters = new TokenValidationParameters
+                    foreach (var resource in Resources.GetApiResources())
                     {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                });
-
-            return services;
+                        context.ApiResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }

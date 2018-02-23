@@ -9,6 +9,8 @@ using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 using Microsoft.AspNetCore;
 using Serilog.Events;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Identity.api
 {
@@ -16,12 +18,12 @@ namespace Identity.api
     {
         public static void Main(string[] args)
         {
-            Console.Title = "IdentityServer4";
-            BuildWebHost(args).Run();
-        }
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+                .Build();
 
-        public static IWebHost BuildWebHost(string[] args)
-        {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
@@ -32,6 +34,26 @@ namespace Identity.api
                 .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
                 .CreateLogger();
 
+            Console.Title = "IdentityServer4";
+
+            try
+            {
+                Log.Information("Demo HttpHost Starting");
+                BuildWebHost(args).Run();
+                Log.Information("Demo HttpHost Started");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+        }
+
+        public static IWebHost BuildWebHost(string[] args)
+        {
             return WebHost.CreateDefaultBuilder(args)
                     .UseStartup<Startup>()
                     .ConfigureLogging(builder =>
@@ -40,6 +62,6 @@ namespace Identity.api
                         builder.AddSerilog();
                     })
                     .Build();
-        }            
+        }
     }
 }

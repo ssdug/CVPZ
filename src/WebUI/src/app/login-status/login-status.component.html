@@ -2,9 +2,13 @@
 
 <div class="statusGroup">
   <ul class="list-group">
-    <li class="list-group-item list-group-item-action">Is Logged In: {{ loggedIn }}</li>
+    <li class="list-group-item">Is Logged In: {{ loggedIn }}</li>
+    <li class="list-group-item" *ngIf="loggedIn">{{ claims | json }}</li>
     <li class="list-group-item list-group-item-action">
+      <a class="btn btn-primary" routerLink="/login" [ngClass]="{ disabled : loggedIn }">Login</a>
       <button class="btn btn-primary" (click)="doLogout()" [ngClass]="{ disabled : !loggedIn }">Logout</button>
     </li>
   </ul>
 </div>
+
+
