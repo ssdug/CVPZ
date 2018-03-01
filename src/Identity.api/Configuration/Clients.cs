@@ -17,11 +17,28 @@ namespace Identity.api.Configuration
                     AllowedScopes = new List<string> {
                         "openid",
                         "profile",
-                        "cv.profile"
+                        "cv.profile",
+                        "cv.project"
                     },
-                    RedirectUris = new List<string> { "http://localhost:4200/auth-callback", "http://localhost:5000/auth-callback" },
-                    PostLogoutRedirectUris = new List<string> { "http://localhost:4200/", "http://localhost:5000/" },
-                    AllowedCorsOrigins = new List<string> { "http://localhost:4200", "http://localhost:5000" },
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    RedirectUris = new List<string> {
+                        "http://localhost:4200/auth-callback",
+                        "http://localhost:5000/auth-callback" },
+                    PostLogoutRedirectUris = new List<string> {
+                        "http://localhost:4200/",
+                        "http://localhost:5000/" },
+                    AllowedCorsOrigins = new List<string> {
+                        "http://localhost:4200",
+                        "http://localhost:5000",
+                        "http://localhost:5002",
+                        "http://localhost:5003",
+                        "http://profile.api",
+                        "http://project.api" },
                     AllowAccessTokensViaBrowser = true
                 },
             };

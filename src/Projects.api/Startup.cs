@@ -26,6 +26,15 @@ namespace Projects.api
             // Add framework services.
             services.AddMvc();
 
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ApiName = "cv.projects";
+                });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",

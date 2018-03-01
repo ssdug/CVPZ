@@ -12,13 +12,6 @@ namespace Profile.api.Controllers
             return Ok("pong");
         }
 
-        [HttpGet("secureping")]
-        [Authorize]
-        public IActionResult SecurePing()
-        {
-            return Ok("pong");
-        }
-
         [HttpGet("check")]
         public IActionResult Check()
         {

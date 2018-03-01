@@ -12,7 +12,7 @@ const settings: UserManagerSettings = {
   redirect_uri: 'http://localhost:5000/auth-callback',
   post_logout_redirect_uri: 'http://localhost:5000/',
   response_type: 'id_token token',
-  scope: 'openid profile cv.profile',
+  scope: 'openid profile cv.profile cv.project',
   filterProtocolClaims: true,
   loadUserInfo: true,
   automaticSilentRenew: true,
@@ -47,7 +47,7 @@ export class AuthService {
   accessToken(): Observable<string> {
     return Observable.fromPromise(this.manager.getUser())
       .map<User, string>((user) => {
-        return user.access_token;
+        return (user) ? user.access_token : null;
       });
   }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,13 +28,12 @@ namespace Profile.api
                 .AddAuthorization()
                 .AddJsonFormatters();
 
-            services.AddAuthentication("Bearer")
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = "http://localhost:5001";
+                    options.Authority = "http://identity.api";
                     options.RequireHttpsMetadata = false;
-
-                    options.ApiName = "health-api";
+                    options.ApiName = "cv.profile";
                 });
 
             services.AddCors(options =>
@@ -53,7 +53,7 @@ namespace Profile.api
             loggerFactory.AddDebug();
 
             app.UseCors("CorsPolicy");
-
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

@@ -28,7 +28,8 @@ namespace Identity.api.Configuration
         {
             return new[]
             {
-                new ApiResource("cv.profile", "CV Profile Api")
+                new ApiResource("cv.profile", "CV Profile Api"),
+                new ApiResource("cv.project", "CV Project Api")
             };
         }
     }

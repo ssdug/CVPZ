@@ -35,7 +35,7 @@ namespace Identity.api
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore();
+            services.AddMvc();
 
             string connectionString = Configuration.GetConnectionString("IdentityServer");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
@@ -62,7 +62,7 @@ namespace Identity.api
                 .AddJwtBearerClientAuthentication()
                 .AddAppAuthRedirectUriValidator()
                 //loaded from your db
-                .AddTestUsers(TestUsers.Users)
+                .AddTestUsers(Identity.api.Configuration.TestUsers.Get())
                 // this adds the config data from DB (clients, resources)
                 .AddConfigurationStore(options =>
                 {
