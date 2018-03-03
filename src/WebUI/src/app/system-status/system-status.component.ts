@@ -20,6 +20,13 @@ export class SystemStatusComponent implements OnInit {
 
   ngOnInit() { }
 
+  resetStatus() {
+    this.identityServiceStatus = null;
+    this.profileServiceStatus = null;
+    this.profileSecureServiceStatus = null;
+    this.projectServiceStatus = null;
+  }
+
   doStatusCheck() {
     this.systemStatusService
       .getIdentityServiceStatus()
@@ -30,11 +37,13 @@ export class SystemStatusComponent implements OnInit {
       .subscribe(x => this.profileServiceStatus = x);
 
     this.systemStatusService
-      .getStatusProfileSecureService()
-      .subscribe(x => this.profileSecureServiceStatus = x);
-
-    this.systemStatusService
       .getStatusProjectService()
       .subscribe(x => this.projectServiceStatus = x);
+  }
+
+  doSecureStatusCheck() {
+    this.systemStatusService
+      .getStatusProfileSecureService()
+      .subscribe(x => this.profileSecureServiceStatus = x);
   }
 }

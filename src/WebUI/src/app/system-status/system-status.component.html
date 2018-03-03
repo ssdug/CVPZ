@@ -1,6 +1,9 @@
 <h2> System Status Component</h2>
 
-<button class="btn btn-primary" (click)="doStatusCheck()">Check Status</button>
+<button class="btn btn-primary" (click)="resetStatus()">Reset</button>
+<button class="btn btn-success" (click)="doStatusCheck()">Status Check</button>
+<button class="btn btn-warning" (click)="doSecureStatusCheck()">Secure Status Check</button>
+
 <div class="statusGroup">
   <ul class="list-group">
     <li class="list-group-item list-group-item-action">Identity Status: {{identityServiceStatus}}</li>
