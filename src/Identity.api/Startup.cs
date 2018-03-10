@@ -83,7 +83,7 @@ namespace Identity.api
                     options.TokenCleanupInterval = 30;
                 });
 
-            services.AddExternalIdentityProviders();
+            //services.AddExternalIdentityProviders();
 
             return services.BuildServiceProvider(validateScopes: true);
         }
