@@ -2,16 +2,6 @@ version: '3'
 
 services:
 
-  cv.data:
-    image: "microsoft/mssql-server-linux:2017-GA"
-    environment:
-      SA_PASSWORD: "yourStrong(!)Password"
-      ACCEPT_EULA: Y
-    networks:
-      - cvpz
-    volumes:
-      - cvpz-sql-data:/var/opt/mssql
-
   webui:
     image: cvpz/webui
     container_name: webui
@@ -29,8 +19,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
-    depends_on:
-      - cv.data
     networks:
       - cvpz
 
@@ -51,10 +39,6 @@ services:
       dockerfile: Dockerfile
     networks:
       - cvpz
-
-volumes:
-  cvpz-sql-data:
-    external: true
 
 networks:
   cvpz:

@@ -57,31 +57,15 @@ namespace Identity.api
                     options.Events.RaiseErrorEvents = true;
                     options.IssuerUri = "http://identity.api";
                 })
+                .AddInMemoryClients(Identity.api.Configuration.Clients.Get())
+                .AddInMemoryIdentityResources(Identity.api.Configuration.Resources.GetIdentityResources())
+                .AddInMemoryApiResources(Identity.api.Configuration.Resources.GetApiResources())
                 .AddDeveloperSigningCredential()
                 .AddExtensionGrantValidator<Extensions.ExtensionGrantValidator>()
                 .AddExtensionGrantValidator<Extensions.NoSubjectExtensionGrantValidator>()
                 .AddJwtBearerClientAuthentication()
                 .AddAppAuthRedirectUriValidator()
-                //loaded from your db
-                .AddTestUsers(Identity.api.Configuration.TestUsers.Get())
-                // this adds the config data from DB (clients, resources)
-                .AddConfigurationStore(options =>
-                {
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
-                })
-                // this adds the operational data from DB (codes, tokens, consents)
-                .AddOperationalStore(options =>
-                {
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
-
-                    // this enables automatic token cleanup. this is optional.
-                    options.EnableTokenCleanup = true;
-                    options.TokenCleanupInterval = 30;
-                });
+                .AddTestUsers(Identity.api.Configuration.TestUsers.Get());
 
             //services.AddExternalIdentityProviders();
 
@@ -90,9 +74,6 @@ namespace Identity.api
 
         public void Configure(IApplicationBuilder app)
         {
-            // this will do the initial DB population
-            InitializeDatabase(app);
-
             app.UseDeveloperExceptionPage();
 
             app.UseIdentityServer();
@@ -100,43 +81,6 @@ namespace Identity.api
             
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
-        }
-
-        private void InitializeDatabase(IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
-                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                context.Database.Migrate();
-                if (!context.Clients.Any())
-                {
-                    foreach (var client in Clients.Get())
-                    {
-                        context.Clients.Add(client.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.IdentityResources.Any())
-                {
-                    foreach (var resource in Resources.GetIdentityResources())
-                    {
-                        context.IdentityResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.ApiResources.Any())
-                {
-                    foreach (var resource in Resources.GetApiResources())
-                    {
-                        context.ApiResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-            }
         }
     }
 }
