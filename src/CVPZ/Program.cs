@@ -10,15 +10,19 @@ namespace CVPZ
 {
   public class Program
   {
-    public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+    public static IConfiguration Configuration { get; private set; }
+
+    public static int Main(string[] args)
+    {
+      var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
         .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
         .AddEnvironmentVariables()
-        .Build();
+        .AddUserSecrets<Program>(); // Example has this added based on env.IsDevelop();
 
-    public static int Main(string[] args)
-    {
+      Configuration = builder.Build();
+
       Log.Logger = new LoggerConfiguration()
           .ReadFrom.Configuration(Configuration)
           .Enrich.FromLogContext()

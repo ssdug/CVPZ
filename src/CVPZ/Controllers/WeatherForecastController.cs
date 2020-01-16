@@ -29,6 +29,12 @@ namespace CVPZ.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            Log.Debug("^^^^^^^^^^^^^^^^^^ Test Debug Logging! %%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            Log.Information("^^^^^^^^^^^^^^^^^^ Test Information Logging! %%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            Log.Warning("^^^^^^^^^^^^^^^^^^ Test Warning Logging! %%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            Log.Error("^^^^^^^^^^^^^^^^^^ Test Error Logging! %%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            Log.Fatal("^^^^^^^^^^^^^^^^^^ Test Fatal Logging! %%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
             Log.Information("Generating Forcast!");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
