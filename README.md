@@ -8,22 +8,18 @@
 ## TOC
 
 - [Who](#who), [What](#what), [Why](#why), [How](#how)
+- [ToDo](#todo)
 - [Getting Started](#getting-started)
-
   - [Running Locally from PowerShell](#running-locally-from-powershell)
   - [Running Under Docker from PowerShell or Bash](#running-under-docker-from-powershell-or-bash)
   - [Running Under Docker from Visual Studio 2017](#running-under-docker-from-visual-studio-2017)
-
 - [Architecture](#architecture)
-
   - [Identity Service](#identity-service)
   - [Web Interface](#web-interface)
   - [Profile Service](#profile-service)
   - [Engagement Service](#engagement-service)
   - [Continuous Integration](#continuous-integration)
-
 - [Sponsors](#sponsors)
-
   - [Become a Sponsor](#become-a-sponsor)
 
 ## Who
@@ -42,6 +38,16 @@ We are hoping to inspire community involvement by building a simple and useful t
 
 By having one common goal to work toward, we will share ideas and continually move the project forward.  We will start with the setup of some infrastructure and then work on basic requirements.  The possibilities are endless with collaborative effort!
 
+## ToDo
+
+- README Updates
+  - Rewrite [Getting Started](#getting-started) based on the reboot
+  - Rewrite Running sections
+  - Add DockerFiles and readme section to run in docker
+  - Update [Architecture](#architecture) section
+- Create Projects for `Application`, `Core`, `Infrastructure`
+- Add `Scrutter` for registering convention named classes with DI
+
 ## Getting Started
 
 1. Install Docker for [Windows](https://download.docker.com/win/beta/InstallDocker.msi), [Mac](https://download.docker.com/mac/beta/Docker.dmg) or [Linux](https://docs.docker.com/engine/installation/linux/).
@@ -59,12 +65,10 @@ By having one common goal to work toward, we will share ideas and continually mo
 ### Running Locally from PowerShell
 
 1. Open PowerShell.
-1. Change directory into the cloned repository `cd CVPZ`.
-1. Execute the command `scripts\local_up.ps1`.
-    - This will build the project and start all services running in the background.
-1. Execute the command `scripts\local_ping.ps1`
-    - This will hit the `api/health/ping` endpoint on all services.
-1. To shut down the image, execute the command `scripts\local_down.ps1`
+1. Change directory into the cloned repository `cd CVPZ`
+1. Execute the command `dotnet run --project .\src\CVPZ\CVPZ.csproj`
+    - This will build the project and start the services running in the background.
+1. In a browser visit <https://localhost:5001>
 
 ### Running Under Docker from PowerShell or Bash
 
@@ -88,7 +92,6 @@ By having one common goal to work toward, we will share ideas and continually mo
 1. Open the `CVPZ.sln`.
 1. Select either Debug or Release configuration.
 1. Right click the `docker-compose` project and select debug.
-
 
 ## Architecture
 
