@@ -11,6 +11,7 @@ using CVPZ.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MediatR;
 using Microsoft.OpenApi.Models;
 
 namespace CVPZ
@@ -30,6 +31,8 @@ namespace CVPZ
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddMediatR(typeof(Application.CreateJournalEntryHandler).Assembly);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
