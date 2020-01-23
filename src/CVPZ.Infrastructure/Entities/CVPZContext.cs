@@ -9,6 +9,13 @@ namespace CVPZ.Infrastructure.Entities
             : base(options)
         { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<JournalEntry>()
+                .Property(x => x.Journal)
+                .IsRequired();
+        }
+
         public DbSet<JournalEntry> JournalEntries { get; set; }
     }
 }
