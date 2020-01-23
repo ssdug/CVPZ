@@ -9,7 +9,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/CVPZ/bin/Debug/netcoreapp3.0/CVPZ.dll",
+      "program": "${workspaceFolder}/src/CVPZ/bin/Debug/netcoreapp3.1/CVPZ.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/CVPZ",
       "stopAtEntry": false,
