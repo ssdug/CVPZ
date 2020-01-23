@@ -119,6 +119,14 @@ By having one common goal to work toward, we will share ideas and continually mo
 1. [Apveyor](https://www.appveyor.com/)
 1. [xUnit](https://xunit.github.io/)
 
+## Database Migrations
+
+1. [Database Migrations](https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dbcontext-creation)
+
+```cli
+dotnet ef migrations add <MigrationName> --project .\src\CVPZ.Infrastructure\ --startup-project .\src\CVPZ\ --context CVPZcontext
+```
+
 ## Sponsors
 
 ### [CodeSmart, Inc](http://codesmartinc.com/)
