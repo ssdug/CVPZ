@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 
 namespace CVPZ.Infrastructure.Entities
 {
