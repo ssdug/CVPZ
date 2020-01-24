@@ -1,0 +1,5 @@
+<h1>journal-entries works!</h1>
+<div *ngIf="entry">
+  <input [(ngModel)]="entry.text">
+  <button (click)="createEntry()">Create</button>
+</div>
