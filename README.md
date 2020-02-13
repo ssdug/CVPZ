@@ -58,6 +58,9 @@ By having one common goal to work toward, we will share ideas and continually mo
 1. Restore packages: `dotnet restore .\CVPZ.sln`.
 1. Open the project in VSCode `code-insiders .` or `code .` depending on what version you chose to install.
     - Note: On Mac OS: after installing, open up VS Code, Press: Command + Shift + P and then type in and select `Shell Command : Install 'code' command in PATH`.  This will enable you to open VS Code from Terminal with the `code .` command.
+1. run `dotnet dev-certs https --trust` and accept the security warning to accept local development ssl certificate.
+    - More detail can be found at [hanselman.com](https://www.hanselman.com/blog/DevelopingLocallyWithASPNETCoreUnderHTTPSSSLAndSelfSignedCerts.aspx)
+
 
 ### Running Locally from PowerShell
 
