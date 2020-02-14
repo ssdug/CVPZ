@@ -18,8 +18,12 @@ namespace CVPZ
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
         .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
-        .AddEnvironmentVariables()
-        .AddUserSecrets<Program>(); // Example has this added based on env.IsDevelop();
+        .AddEnvironmentVariables();
+
+      if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+      {
+        builder = builder.AddUserSecrets<Program>(); // Example has this added based on env.IsDevelop();
+      }
 
       Configuration = builder.Build();
 
