@@ -1,5 +1,11 @@
-<h1>journal-entries works!</h1>
+<h1>Job Journal Entries</h1>
 <div *ngIf="entry">
-  <input [(ngModel)]="entry.text">
+  <input [(ngModel)]="entry.description">
   <button (click)="createEntry()">Create</button>
 </div>
+
+<ul *ngIf="entries">
+  <li *ngFor="let entry of entries">
+    {{ entry.description }}
+  </li>
+</ul>

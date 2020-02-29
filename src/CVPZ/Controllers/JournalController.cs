@@ -1,4 +1,5 @@
 ﻿using CVPZ.Application;
+using CVPZ.Core.Model;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace CVPZ.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<string> Create(CreateJournalEntry request)
+        public async Task<JournalEntry> Create(CreateJournalEntry request)
         {
             return await _mediator.Send(request);
         }

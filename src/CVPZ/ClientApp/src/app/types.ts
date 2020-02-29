@@ -1,3 +1,8 @@
 export class JournalEntry {
-  text: string;
+  id: number;
+  description: string;
+}
+
+export class CreateJournalEntry {
+  description: string;
 }
