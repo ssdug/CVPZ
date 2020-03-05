@@ -1,3 +1,4 @@
+using CVPZ.Core.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace CVPZ.Infrastructure.Entities
@@ -12,7 +13,7 @@ namespace CVPZ.Infrastructure.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<JournalEntry>()
-                .Property(x => x.Journal)
+                .Property(x => x.Description)
                 .IsRequired();
         }
 

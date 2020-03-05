@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MediatR;
 using Microsoft.OpenApi.Models;
+using CVPZ.Infrastructure.Entities;
 
 namespace CVPZ
 {
@@ -28,9 +29,8 @@ namespace CVPZ
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<CVPZContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMediatR(typeof(Application.CreateJournalEntryHandler).Assembly);
 
@@ -39,6 +39,8 @@ namespace CVPZ
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CVPZ API", Version = "v1.0.0.0" });
             });
+
+            services.AddTransient<Core.Repositories.IJournalEntryRepository, Infrastructure.Entities.JournalEntryRepository>();
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
